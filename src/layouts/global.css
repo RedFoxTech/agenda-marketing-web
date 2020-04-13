@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
+* {
+    font-family: "Questrial";
+}
+
+.form_auth {
+    width: 350px;
+    justify-content: center;
+    box-shadow: 4px 5px 20px 2px #ccc;
+}
+
+.form_auth a,
+.form_auth a:hover {
+    text-decoration: none;
+}
+
+.footer_form {
+    justify-content: space-between;
+    align-items: center
+}
+
+.msg_alert {
+    color: #ff0000;
+}
