@@ -101,14 +101,14 @@
             <b-col>
               <b-form-group>
                 <label for="input-3">Início</label>
-                <date-picker class="mb-2" v-model="scheduleModal.start._date"></date-picker>
+                <datepicker class="mb-2" v-model="scheduleModal.start._date"/>
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group>
                 <label for="input-4">Fim</label>
 
-                <date-picker class="mb-2" v-model="scheduleModal.end._date" />
+                <datepicker class="mb-2" v-model="scheduleModal.end._date" />
               </b-form-group>
             </b-col>
           </b-row>
@@ -141,7 +141,8 @@ import "tui-calendar/dist/tui-calendar.css";
 import Calendar from "../components/TuiCalendar";
 import Category from "../components/Category";
 import Navbar from "../components/Navbar";
-
+import Datepicker from 'vuejs-datepicker';
+ 
 import {
   loadingSchedule,
   deleteSchedule,
@@ -156,7 +157,8 @@ export default {
   components: {
     Calendar,
     Category,
-    Navbar
+    Navbar,
+    Datepicker
   },
   data() {
     return {
