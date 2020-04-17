@@ -46,13 +46,15 @@ export default {
     };
   },
   methods: {
-    async onRegister() {
+    async onRegister(e) {
+      e.preventDefault();
+
       try {
         await registerUser(this.user)
           .then(({ data }) => this.authenticateUser(data))
           .then(() => this.$router.push({
-              path: "/calendar"
-            }));
+            path:'/calendar'
+          }))
       } catch (err) {
         this.msg = "Email já existe";
       }
