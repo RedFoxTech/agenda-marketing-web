@@ -2,37 +2,36 @@
   <b-container class="d-flex mt-5 pt-5" style="justify-content:center;" fluid>
     <b-card class="form_auth">
       <formAuth
-        title="Cadastro"
+        title="Redefinir Senha"
         :form="form"
         :user="user"
         :msg="msg"
-        button="Cadastrar"
+        button="Redefinir"
         link_text="Voltar para o login"
         link="/"
-        @onAuth="onRegister"
+        @onAuth="onReset"
       />
     </b-card>
   </b-container>
 </template>
 
 <script>
-import { registerUser } from "../services/user";
-import { saveToken } from "../services/authenticate";
+import { resetUser } from "../services/user";
 
 import FormAuth from "../components/FormAuth";
 
 export default {
-  components:{
+  components: {
     FormAuth
   },
   data() {
     return {
       form: [
         {
-          label: "Nome",
+          label: "Token",
           type: "text",
-          placeholder: "Nome",
-          model: "name"
+          placeholder: "Token",
+          model: "token"
         },
         {
           label: "Email",
@@ -48,7 +47,7 @@ export default {
         }
       ],
       user: {
-        name: "",
+        token: "",
         email: "",
         password: ""
       },
@@ -56,22 +55,16 @@ export default {
     };
   },
   methods: {
-    async onRegister() {
-   
+    async onReset() {
       try {
-        await registerUser(this.user)
-          .then(({ data }) => this.authenticateUser(data))
-          .then(() =>
-            this.$router.push({
-              path: "/calendar"
-            })
-          );
+        await resetUser(this.user).then(() =>
+          this.$router.push({
+            path: "/"
+          })
+        );
       } catch (err) {
-        this.msg = "Email já existe";
+        this.msg = "Token inválido";
       }
-    },
-    authenticateUser(data) {
-      saveToken(data.token);
     }
   }
 };

@@ -12,3 +12,7 @@ export const loadingUsers = async () => axios.get('/auth', {
         authorization: await tokenFormated()
     }
 });
+
+export const forgotUser = (user) => axios.put('auth/forgot_password', user);
+
+export const resetUser = (user) => axios.post('auth/reset_password', user);
