@@ -97,6 +97,10 @@
             <label for="input-2">Título</label>
             <b-form-input id="input-2" v-model="scheduleModal.title" placeholder="Título" />
           </b-form-group>
+          <b-form-group>
+            <label for="input-8">Descrição</label>
+            <b-textarea id="input-8" v-model="scheduleModal.body" placeholder="Descrição" />
+          </b-form-group>
           <b-row>
             <b-col>
               <b-form-group>
@@ -172,6 +176,7 @@ export default {
         id: "0",
         calendarId: 0,
         title: "",
+        body:"",
         start: {
           _date: null
         },
@@ -262,6 +267,7 @@ export default {
         res => (this.getSchedules = res.data.schedules)
       );
       this.scheduleList = this.getSchedules;
+
       await loadingUsers().then(res =>
         res.data.users.map(us => this.users.push(us.email))
       );
@@ -330,6 +336,7 @@ export default {
         id: "0",
         calendarId: 0,
         title: "",
+        body:"",
         start: {
           _date: null
         },
@@ -386,6 +393,7 @@ export default {
     onClickSchedule(res) {
       this.scheduleModal = {
         title: res.schedule.title,
+        body: res.schedule.body,
         start: res.schedule.start,
         end: res.schedule.end,
         id: res.schedule.id,

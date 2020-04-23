@@ -60,7 +60,7 @@ export default {
             })
           );
       } catch (err) {
-        return (this.msg = "Email ou senha inválido");
+        return (this.msg = "Email ou senha inválidos");
       }
     },
     authenticateUser(data) {
